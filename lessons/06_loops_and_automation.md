@@ -23,8 +23,8 @@ The structure or the syntax of (*for*) loops in bash is as follows:
 ```bash
 for (variable_name) in (list)
 	do
-	(command1 $variable_name)
-	(command2 $variable_name)
+	(command1 ${variable_name})
+	(command2 ${variable_name})
 	...
 	....
 	done
@@ -41,8 +41,8 @@ $ cd ~/unix_lesson/raw_fastq/
 
 $ for x in Mov10_oe_1.subset.fq Mov10_oe_2.subset.fq Mov10_oe_3.subset.fq
  do
-   echo $x
-   wc -l $x
+   echo ${x}
+   wc -l ${x}
  done
 ```
 
@@ -63,10 +63,10 @@ $ for x in Mov10_oe_1.subset.fq Mov10_oe_2.subset.fq Mov10_oe_3.subset.fq
 
 	> **We don't explicitly see this, but the variable has been defined as `x=Mov10_oe_1.subset.fq`.**
 
-2. Next, all of the commands in the body of the loop (between the `do` and `done`) are executed. Usually, the commands placed here will be using the temporary variable as input. **Remember, if you are using the value stored in the variable you need to use $ to reference it!** In the example, we are running two commands:
+2. Next, all of the commands in the body of the loop (between the `do` and `done`) are executed. Usually, the commands placed here will be using the temporary variable as input. **Remember, if you are using the value stored in the variable you need to use ${} to reference it!** In the example, we are running two commands:
 
-	* `echo $x`: print out the value stored in `x`
-	* `wc -l $x`: count/report the number of lines in `x`
+	* `echo ${x}`: print out the value stored in `x`
+	* `wc -l ${x}`: count/report the number of lines in `x`
 
 3. Once those two commands are complete, the temporary variable is assigned a new value. It now takes the value of the second item in the list.
 
@@ -102,8 +102,8 @@ Let's rewrite the for loop above using a more meaningful variable name and using
 ```bash
 $ for file in Mov10*.fq
  do
-   echo $file
-   wc -l $file
+   echo ${file}
+   wc -l ${file}
  done
 ```
 
@@ -178,28 +178,27 @@ For each file that we process we can use `basename` to create a prefix from the 
 ```bash
 do
   # create a prefix for all output files
-  samplename=`basename $filename .subset.fq`
+  samplename=`basename ${filename} .subset.fq`
 ```
 
 Now we execute the command required to dump the bad reads to file, but first start with an `echo` statement to keep the user informed. We will use `grep` to find all the bad reads (in our case, bad reads are defined as those with 10 consecutive N's), and then extract the four lines associated with each sequence read and write them to a file. Our output file is named using the `samplename` variable we created earlier in the loop. We will also add a path to redirect output to the `badreads` directory.
 
 ```bash
   # tell us what file we're working on
-  echo $filename
+  echo ${filename}
   
   # grab all the bad read records into new file
-  grep -B1 -A2 NNNNNNNNNN --no-group-separator $filename > ~/unix_lesson/badreads/${samplename}_badreads.fq
+  grep -B1 -A2 NNNNNNNNNN --no-group-separator ${filename} > ~/unix_lesson/badreads/${samplename}_badreads.fq
 ``` 
 
-> #### Why are we using curly brackets with the variable name?
-> When we append a variable to some other free text, we need shell to know where our variable name ends. By encapsulating the variable name in curly brackets we are letting shell know that everything inside it is the variable name. This way when we reference it, shell knows to print the variable `$samplename` and not to look for a variable called `$samplename_badreads.fq`.
+> Reminder: When we append a variable to some other free text, we need shell to know where our variable name ends. By encapsulating the variable name in curly brackets we are letting shell know that everything inside it is the variable name. This way when we reference it, shell knows to print the variable `samplename` and not to look for a variable called `samplename_badreads.fq`.
 
   
 We'll also count the number of identified bad reads using the count flag of `grep`, `-c`, which will return the number of matches rather than the actual matching lines. Here, we also use a new `grep` flag `-H`; this will report the filename along with the count value. This is useful because we are writing this information to a running log summary file, so rather than just reporting a count value we also know which file it is associated with.
 
 ```bash
   # grab the number of bad reads and write it to a summary file
-  grep -cH NNNNNNNNNN $filename >> ~/unix_lesson/badreads/badreads.count.summary
+  grep -cH NNNNNNNNNN ${filename} >> ~/unix_lesson/badreads/badreads.count.summary
 done
 ```
 
@@ -216,16 +215,16 @@ for filename in *.fq
 do 
 
   # create a prefix for all output files
-  samplename=`basename $filename .subset.fq`
+  samplename=`basename ${filename} .subset.fq`
 
   # tell us what file we're working on	
-  echo $filename
+  echo ${filename}
 
   # grab all the bad read records
-  grep -B1 -A2 --no-group-separator NNNNNNNNNN $filename > ~/unix_lesson/badreads/${samplename}_badreads.fq
+  grep -B1 -A2 --no-group-separator NNNNNNNNNN ${filename} > ~/unix_lesson/badreads/${samplename}_badreads.fq
 
   # grab the number of bad reads and write it to a summary file
-  grep -cH NNNNNNNNNN $filename >> ~/unix_lesson/badreads/badreads.count.summary
+  grep -cH NNNNNNNNNN ${filename} >> ~/unix_lesson/badreads/badreads.count.summary
 done
 
 ```
