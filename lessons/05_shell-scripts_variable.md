@@ -138,13 +138,33 @@ $ num=25
 
 Once you press return, you will find yourself back at the command prompt. **How do we know that we actually created the bash variable?**
 
-One way to see the variable created is by using the `echo` command. As we learned earlier, this command takes the argument provided and prints it to the terminal. If we provide `num` as an argument it will be simply interpreted as a character string "num". We want `echo` to display the contents of the variable and not its name. To do this we need to **explicitly use a `$` in front of the variable name**:
+One way to see the variable created is by using the `echo` command. As we learned earlier, this command takes the argument provided and prints it to the terminal. If we provide `num` as an argument it will be simply interpreted as a character string "num". We want `echo` to display the contents of the variable and not its name. To do this we need to **explicitly use a `$` in front of the variable name along with wrapping the variable in `{}`**:
+
+```bash
+$ echo ${num}
+```
+
+You should see the number 25 returned to you. Did you notice that when we created the variable, there was no need for a `$`? This is standard shell notation (syntax) for defining and using variables. When defining the variable (i.e. setting the value) you can just type it as is, but when **retrieving the value of a variable don't forget the `$` and `{}`!** 
+
+It is important to note that you don't *need* to wrap your variable in `{}` and you can just return variables without them like:
 
 ```bash
 $ echo $num
 ```
 
-You should see the number 25 returned to you. Did you notice that when we created the variable, there was no need for a `$`? This is standard shell notation (syntax) for defining and using variables. When defining the variable (i.e. setting the value) you can just type it as is, but when **retrieving the value of a variable don't forget the `$`!** 
+This will work if your variable is surrounded by whitespace, or a handful of other characters, like in the above example. However, you may want to have text adjacent to your `bash` variable like:
+
+```bash
+$ echo ${num}th
+```
+
+This will return the variable `num` followed by the text `th`. By providing the `{}`, we are explicitly stating the variable name to `bash` as `num`. If you don't use the `{}` in the above example:
+
+```bash
+$ echo $numth 
+```
+
+Then `bash` will look for the variable `numth` and not be able to find it, so it will return nothing. In short, you will likely see many people not using `{}` around their bash variables as it can sometimes be a bit more cumbersome, however, we do encourage people to do it in order to make their variables more clearly defined.
 
 > **NOTE:** Variables are not physical entities like files. When you create files you can use `ls` to list contents and see if the file exists. When creating variables, to list all variables in your environment you can use the command `declare` with the `-p` option. You will notice that while you only have created one variable so far, the output of `declare -p` will be more than just one variable. These other variables are called environment variables and will be [discussed in more detail later in the workshop](07_permissions_and_environment_variables.md).
 > 
@@ -164,13 +184,13 @@ $ file=Mov10_oe_1.subset.fq
 Once you press return, you should be back at the command prompt. Let's check what's stored inside `file` using the `echo` command:
 
 ```bash
-$ echo $file
+$ echo ${file}
 ```
 
 Now let's use this variable `file` as input to one of the commands we previously learned:
 
 ```bash
-$ wc -l $file
+$ wc -l ${file}
 ```
 
 **What do you see in the terminal? What you were expecting `wc -l` to return to you?**
@@ -180,7 +200,7 @@ The `wc -l` command is used to count and report the number of lines in a file. H
 * Provide a path to the file:
 
 ```bash
-$ wc -l ~/unix_lesson/raw_fastq/$file
+$ wc -l ~/unix_lesson/raw_fastq/${file}
 ```
 OR 
 
@@ -188,7 +208,7 @@ OR
 
 ```bash
 $ cd ~/unix_lesson/raw_fastq
-$ wc -l $file
+$ wc -l ${file}
 ```
 
 Either one of these options should have worked and you should see the number of lines in the file reported to you!
@@ -199,7 +219,7 @@ Either one of these options should have worked and you should see the number of 
 
 **Exercise**
 
-1. Use the `$file` variable as input to the `head` and `tail` commands, and modify the arguments to display only four lines. Provide the lines of code used and report the header lines (`@HWI`) you retrieve from each command. 
+1. Use the `${file}` variable as input to the `head` and `tail` commands, and modify the arguments to display only four lines. Provide the lines of code used and report the header lines (`@HWI`) you retrieve from each command. 
 2. Create a new variable called `meta` and assign it the value `Mov10_rnaseq_metadata.txt`. For the following questions, use the `$meta` variable but do not change directories. Provide the code you would run to:
 	1. Display the contents of the file using `cat`.
 	2. Retrieve only the lines which contain normal samples. (*Hint: use `grep`*).  
@@ -207,18 +227,18 @@ Either one of these options should have worked and you should see the number of 
 	<details>
 	<summary><b><i>Answers</i></b></summary>
 		<p><i>Question 1</i><br>
-		<code>head -n 4 $file</code><br>
+		<code>head -n 4 ${file}</code><br>
 		@HWI-ST330:304:H045HADXX:1:1101:1162:205<br></p>
-		<p><code>tail -n 4 $file</code><br>
+		<p><code>tail -n 4 ${file}</code><br>
 		@HWI-ST330:304:H045HADXX:2:2212:15724:100530</p>
 		<i>Question 2</i><br>
 		<code>meta=Mov10_rnaseq_metadata.txt</code>
 		<p><i>Part i</i><br>
-		<code>cat ../other/$meta</code> (relative path) or <br> 
-		<code>cat ~/unix_lesson/other/$meta</code> (full path)<br></p>
+		<code>cat ../other/${meta}</code> (relative path) or <br> 
+		<code>cat ~/unix_lesson/other/${meta}</code> (full path)<br></p>
 		<p><i>Part ii</i><br>
-		<code>grep normal ../other/$meta</code> (relative path) or<br>
-       		<code>grep normal ~/unix_lesson/other/$meta</code> (full path)<br></p>
+		<code>grep normal ../other/${meta}</code> (relative path) or<br>
+       		<code>grep normal ~/unix_lesson/other/${meta}</code> (full path)<br></p>
 	</details>
 	
 	
@@ -284,7 +304,7 @@ $ samplename=`basename ~/unix_lesson/raw_fastq/Mov10_oe_1.subset.fq .fq`
 Once you press return you should be back at the command prompt. Check to see what got stored in the `samplename` variable:
 
 ```bash
-$ echo $samplename
+$ echo ${samplename}
 ```
 
 > #### The `basename` command
@@ -324,25 +344,25 @@ Next, we will create another variable to store the directory name. To get the di
 
 ```bash
 # Get only the directory name
-dirName=`basename $dirPath`
+dirName=`basename ${dirPath}`
 ```
 
 The next few tasks we want to execute require simple commands for changing directories (`cd`), listing contents of a directory (`ls -l`). We can add these into our script making sure we are referencing the correct variable and also including meaningful `echo` statements for verbosity.
 
 ```bash
-echo "Reporting on the directory" $dirName "..."
+echo "Reporting on the directory" ${dirName} "..."
 
 # Move into the directory
-cd $dirPath
+cd ${dirPath}
 
-echo "These are the contents of" $dirName
+echo "These are the contents of" ${dirName}
 ls -l 
 ```
 
 The final task of reporting the total number of files will require us to pipe (`|`) together multiple commands:
 
 ```bash
-echo "The total number of files contained in" $dirName
+echo "The total number of files contained in" ${dirName}
 ls | wc -l
 
 echo "Report complete!"
@@ -355,17 +375,17 @@ After adding in a final `echo` statement, we are all set with script! Make sure 
 dirPath=~/unix_lesson/raw_fastq
 
 # Get only the directory name
-dirName=`basename $dirPath`
+dirName=`basename ${dirPath}`
 
-echo "Reporting on the directory" $dirName "..."
+echo "Reporting on the directory" ${dirName} "..."
 
 # Move into the directory
-cd $dirPath
+cd ${dirPath}
 
-echo "These are the contents of" $dirName
+echo "These are the contents of" ${dirName}
 ls -l 
 
-echo "The total number of files contained in" $dirName
+echo "The total number of files contained in" ${dirName}
 ls | wc -l
 
 echo "Report complete!"
