@@ -60,6 +60,8 @@ Everyone should have their Terminal (or Git BASH Terminal) window open. Using th
 <img src="../img/login1.png" width="700">
 </p>
 
+> NOTE: If you are on Mac OS, your command prompt might be a `%` rather than a `$`. This is because the default shell on Mac OS is `zsh`, which uses `%` as its command prompt, and not `bash`, which uses `$` for its command prompt. While these shells are slightly different, those differences are well beyond the scope for this workshop. Once we get logged into O2, we will all be using the same shell and our command prompt will be `$`.  
+
 To connect to the login node on O2:
 
 1. Type in the `ssh` command at the command prompt followed by a space, and then type your username (e.g. rc_training10) plus the address of the cluster `@o2.hms.harvard.edu`. There is no space between the username and the "@" symbol (see below).
