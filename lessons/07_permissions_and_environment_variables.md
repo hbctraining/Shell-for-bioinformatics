@@ -222,7 +222,7 @@ In this lesson, we are going to focus on two most commonly encountered environme
 * `${HOME}` defines the full path for the home directory of a given user.
 * `${PATH}` defines a list of directories to search in when looking for a command/program to execute.
 
-Environment variables, in most systems, are called or denoted with a "$" before the variable name, just like a regular variable. Like regular variables, we can also wrap them in `{}` in order to be more explicit about the variable name. Let's use the `echo` command to see what is stored in `$HOME`:
+Environment variables, in most systems, are called or denoted with a "$" before the variable name, just like a regular variable. Like regular variables, we can also wrap them in `{}` in order to be more explicit about the variable name. Let's use the `echo` command to see what is stored in `${HOME}`:
 
 ```bash
 $ echo ${HOME}
@@ -231,7 +231,7 @@ $ echo ${HOME}
 You should see the path to your home directory. `${HOME}` can be used instead of the `~` (if you want to type 4 more characters).
 
 
-`$HOME` is pretty straightforward, how about we take a look at what is stored in the `$PATH` variable:
+`${HOME}` is pretty straightforward, how about we take a look at what is stored in the `${PATH}` variable:
 
 ```bash
 $ echo ${PATH}
