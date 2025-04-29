@@ -107,7 +107,7 @@ II. **Complete the exercises**:
 | Time |  Topic  | Instructor |
 |:-----------:|:----------:|:--------:|
 | 9:30 - 10:00 | Self-learning lessons review | All |
-| 10:00 - 11:00 | [Introduction to the O2 cluster](../lectures/HPC_intro_O2_20250127_kmk34_edits.pdf) | Will |
+| 10:00 - 11:00 | [Introduction to the O2 cluster](../lectures/HPC_intro_O2_20250422_kmk34_edits.pdf) | Will |
 | 11:00 - 11:30 | [Exercise](../activities/sbatch_exercise.md) ([answer key](../activities/sbatch_exercise_answer.txt))| Elizabeth |
 | 11:30 - 11:45 | Introduction to the O2 cluster - data storage| Will |
 | 11:45 - 12:00 | [Wrap up](../lectures/workshop_wrapup_slides.pdf) | Elizabeth |
