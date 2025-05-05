@@ -2,7 +2,9 @@
 
 ## Learning Objectives
 
-- Understand the necessity for, and use of, the command line interface (bash/shell).
+- Navigate around the command line interface (bash/shell)
+- Create and manipulate text files
+- Submit jobs to a high-performance computing cluster
 
 ## Installations
 
