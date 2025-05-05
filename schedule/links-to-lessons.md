@@ -30,18 +30,24 @@ To run through the code in the lessons below, you will need to be **logged into 
 
 ### Part I
 1. [Introduction to Shell](../lessons/01_the_filesystem.md)
-1. [Wildcards and shortcuts in Shell](../lessons/02_wildcards_shortcuts.md)
-1. [Examining and creating files](../lessons/03_working_with_files.md)
-1. [Searching and redirection](../lessons/04_searching_files.md)
-1. [Shell scripts and variables in Shell](../lessons/05_shell-scripts_variable.md)
+2. [Wildcards and shortcuts in Shell](../lessons/02_wildcards_shortcuts.md)
+3. [Examining and creating files](../lessons/03_working_with_files.md)
+4. [Searching and redirection](../lessons/04_searching_files.md)
 
-* [Solution to exercises in above lessons](../homework/Day1_answer_key.txt)
+#### Answer Key 
+[Solution to exercises](../homework/Day1_answer_key.txt)
+
+***
 
 ### Part II
-1. [Loops and automation](../lessons/06_loops_and_automation.md)
-1. [Permissions and Environment Variables](../lessons/07_permissions_and_environment_variables.md)
+1. [Shell scripts and variables in Shell](../lessons/05_shell-scripts_variable.md)
+2. [Loops and automation](../lessons/06_loops_and_automation.md)
+3. [Permissions and Environment Variables](../lessons/07_permissions_and_environment_variables.md)
 
-* [Solution to exercises in above lessons](../homework/Day2_answer_key.txt)
+#### Answer Key 
+[Solution to exercises](../homework/Day2_answer_key.txt)
+
+***
 
 ### Part III
 1. [Introduction to High-performance computing](../lessons/08_HPC_intro_and_terms.md)
@@ -51,8 +57,9 @@ To run through the code in the lessons below, you will need to be **logged into 
  
 ## Building on this workshop
 
-* [More fun with bash commands](../lessons/extra_bash_tools.md)
-* [Advanced bash commands (aliases, copying files, and symlinks)](https://hbctraining.github.io/Intro-to-rnaseq-hpc-salmon-flipped/lessons/more_bash_cluster.html)
+- [Accelerate with Automation - Making your code work for you](https://hbctraining.github.io/Training-modules/Accelerate_with_automation/)
+- [Needle in a Haystack: Finding and summarizing data from colossal files](https://hbctraining.github.io/Training-modules/Finding_and_summarizing_colossal_files/)
+- [Tips and Tricks for the O2 cluster](https://hbctraining.github.io/Training-modules/Tips_and_Tricks_on_O2/)
 
 ***
 
