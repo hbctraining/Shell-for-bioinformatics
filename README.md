@@ -29,7 +29,7 @@ No installation requirements.
 [GitBash](https://git-scm.com/download/win)  
 
 ### Dataset
-[Shell for Bioinformatics: Dataset](https://www.dropbox.com/s/t3lkyz1pz021222/unix_lesson.tar.gz?dl=1)
+[Shell for Bioinformatics: Dataset](https://www.dropbox.com/scl/fi/sfuftv7qx2fdi37wytep3/unix_lesson.zip?rlkey=hdx8yq1ppp80mqurrcxj67tz&e=1&dl=1)
 
 ---
 
