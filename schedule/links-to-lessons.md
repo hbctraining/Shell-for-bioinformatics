@@ -15,7 +15,7 @@ No installation requirements.
 
 ## Notes
 * These materials focus on the use of local computational resources at Harvard, which are **only accessible to Harvard affiliates**
-* Non-Harvard folks can [download the data](https://www.dropbox.com/s/t3lkyz1pz021222/unix_lesson.tar.gz?dl=1) and set up to work on their local clusters (with the help of local system administrators)
+* Non-Harvard folks can [download the data](https://www.dropbox.com/scl/fi/sfuftv7qx2fdi37wytep3/unix_lesson.zip?rlkey=hdx8yq1ppp80mqurrxcxj67tz&e=1&st=51v17xlz&dl=1) and set up to work on their local clusters (with the help of local system administrators)
 
 ### Instructions for Harvard researchers with access to HMS-RC's O2 cluster
 
