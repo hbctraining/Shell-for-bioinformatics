@@ -37,7 +37,7 @@ No installation requirements.
 
 To cite material from this course in your publications, please use:
 
-> Jihe Liu, William J. Gammerdinger, Meeta Mistry, Mary E. Piper, & Radhika S. Khetani. (2022, January 6). hbctraining/Intro-to-shell-flipped: Shell and HPC Lessons from HCBC (first release). Zenodo. https://doi.org/10.5281/zenodo.5826091
+> Jihe Liu, William J. Gammerdinger, Meeta Mistry, Mary E. Piper, Radhika S. Khetani, Elizabeth Partan, Noor Sohail, Upendra Bhattarai & Heather Wick. (2022, January 6). hbctraining/Shell for Bioinformatics. Zenodo. https://doi.org/10.5281/zenodo.5826091
 
 A lot of time and effort went into the preparation of these materials. Citations help us understand the needs of the community, gain recognition for our work, and attract further funding to support our teaching activities. Thank you for citing this material if it helped you in your data analysis.
 
